@@ -1,7 +1,6 @@
-import { Box, Flex, Grid, Section, Text } from "@radix-ui/themes";
+import { Flex, Grid, Section, Text } from "@radix-ui/themes";
 
 import LoginPage from "./LoginPage";
-import { Container } from "lucide-react";
 
 function LandingPage() {
   return (
