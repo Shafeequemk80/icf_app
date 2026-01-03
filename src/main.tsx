@@ -12,18 +12,19 @@ createRoot(document.getElementById("root")!).render(
     <BrowserRouter>
     <Theme
       style={{
-        backgroundImage: "url('/sideshape.png')",
+        backgroundImage: "url('/loginpagegb.jpg')",
         backgroundRepeat: "no-repeat",
-        backgroundPosition: "left center",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+
       }}
-      className="bg-[#f4f4f4] min-h-screen"
+      className=" min-h-screen"
       accentColor="crimson"
       appearance="inherit"
       panelBackground="translucent"
       hasBackground={true}
       grayColor="sand"
       radius="large"
-      scaling="95%"
     >
       <Provider store={store}>
         <App />
