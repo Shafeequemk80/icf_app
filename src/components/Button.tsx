@@ -1,4 +1,4 @@
-import React from "react";
+
 import { Button as RadixButton } from "@radix-ui/themes";
 import { Bookmark } from "lucide-react";
 
