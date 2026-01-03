@@ -5,6 +5,7 @@ import type { User } from "../types/auth";
 
 
 type AuthState = {
+
   user: User | null;
   token: string | null;
   loading: boolean;
@@ -12,7 +13,7 @@ type AuthState = {
 };
 
 const initialState: AuthState = {
-  user: null,
+  user: JSON.parse(localStorage.getItem("user") || "null"),
   token: null,
   loading: false,
   error: null,
@@ -23,6 +24,8 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     Logout(state) {
+      localStorage.removeItem("user");
+      state.token=null
       state.user = null;
       state.token = null;
     }},
@@ -35,7 +38,9 @@ const authSlice = createSlice({
       .addCase(loginUser.fulfilled, (state, action) => {
         state.loading = false;
         state.user = action.payload.user;
-        state.token = action.payload.token;
+        //state.token = action.payload.token;
+        localStorage.setItem("user", JSON.stringify(action.payload.user));
+
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;

@@ -29,7 +29,7 @@ export const loginUser = createAsyncThunk<
     console.log(credentials)
     try {
       const response = await api.post<LoginResponse>( 
-        "/api/login",
+        "/login",
         credentials,
         {
           headers: {

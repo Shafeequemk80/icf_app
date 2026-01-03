@@ -11,8 +11,11 @@ import PasswordEye from "../components/PasswordEye";
 import { loginSchema, type LoginFormData } from "../utilities/validation";
 import { loginUser } from "../thunks/authThunk";
 import type {AppDispatch, RootState } from "../store/store";
+import { useNavigate } from "react-router-dom";
 
 function LoginPage() {      
+  const navigate = useNavigate();
+
   const dispatch = useDispatch<AppDispatch>();
   const {loading ,error} = useSelector((state:RootState)=>state.auth)
   
@@ -38,16 +41,20 @@ function LoginPage() {
 
     // --- Server request ---
     try {
-await dispatch(loginUser(formData)).unwrap();
+const result = await dispatch(loginUser(formData)).unwrap();
 
+    // success
+    console.log("Login success:", result);
 
-      alert("Login successful");
+    navigate("/homepage", { replace: true });
+
     } catch {
+       console.error("Login error:", error);
     }
   }
 
   return (
-    <div className="min-h-screen mt-10 flex justify-start ">
+    <div className=" flex justify-start ">
       <Form.Root onSubmit={handleSubmit} className="w-full max-w-md">
         <FormInput
           name="username"
